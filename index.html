@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="p5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta charset="utf-8" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .pinkcontainer {
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      section {
+        margin-bottom: 20px;
+      }
+
+      /* Ensure all text sizes are no larger than 12px */
+      p,
+      label {
+        color: white;
+        font-size: 12px;
+        margin: 5px 0;
+      }
+
+      /* Style for play button */
+      .large-play {
+        font-size: 12px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      /* Radio button styling */
+      .horizontal-left {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      .large-radio {
+        transform: scale(1.2);
+        margin-right: 5px;
+      }
+
+      /* Range input (slider) styling */
+      .large-sens {
+        width: 80%;
+        height: 5px;
+      }
+
+      /* Responsive design: scale elements based on screen size */
+      @media (max-width: 600px) {
+        .large-play,
+        .large-radio,
+        .large-sens {
+          transform: scale(0.8); /* Scale down elements for smaller screens */
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .large-play,
+        .large-radio,
+        .large-sens {
+          transform: scale(1.2); /* Scale up elements for larger screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pinkcontainer" id="withmargins">
+      <div>
+        <section>
+          <button class="large-play" id="playButton">play/pause</button>
+        </section>
+
+        <div id="control_contain">
+          <section>
+            <p><br /><br />select display mode:</p>
+            <div class="horizontal-left blockdisp">
+              <div>
+                <input
+                  type="radio"
+                  class="large-radio"
+                  id="mode"
+                  name="mode"
+                  value="grid"
+                  checked
+                />
+                <label for="grid">grid</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  class="large-radio"
+                  id="mode"
+                  name="mode"
+                  value="party"
+                />
+                <label for="party">party</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  class="large-radio"
+                  id="mode"
+                  name="mode"
+                  value="color"
+                />
+                <label for="color">color</label>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <p>sensitivity to bass:</p>
+            <input
+              class="large-sens"
+              type="range"
+              id="bass"
+              name="intensity"
+              min="0"
+              max="100"
+              value="50"
+            />
+
+            <p>sensitivity to mid:</p>
+            <input
+              class="large-sens"
+              type="range"
+              id="mid"
+              name="intensity"
+              min="0"
+              max="100"
+              value="50"
+            />
+
+            <p>sensitivity to treble:</p>
+            <input
+              class="large-sens"
+              type="range"
+              id="treble"
+              name="intensity"
+              min="0"
+              max="100"
+              value="50"
+            />
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
