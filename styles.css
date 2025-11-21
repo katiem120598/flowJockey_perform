@@ -246,15 +246,3 @@ navbarog {
   justify-content: space-between; /* Evenly distribute space between elements */
   height: 50%; /* Ensure the section takes up the full height of the container */
 }
-
-.slider-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.num-box {
-  width: 60px;
-  font-size: 12px;
-  padding: 4px;
-}
