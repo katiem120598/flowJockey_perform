@@ -12,6 +12,17 @@ const treble = document.getElementById("treble");
 const lowThresh = document.getElementById("low-thresh");
 const midThresh = document.getElementById("mid-thresh");
 const highThresh = document.getElementById("high-thresh");
+const lowSlider = document.getElementById("low-thresh");
+const lowInput = document.getElementById("low-thresh-input");
+
+// --- SYNC SLIDER <-> INPUT BOX ---
+lowSlider.addEventListener("input", () => {
+  lowInput.value = lowSlider.value;
+});
+lowInput.addEventListener("input", () => {
+  lowSlider.value = lowInput.value;
+});
+
 const playpause = document.getElementById("playButton")
 
 document.addEventListener("DOMContentLoaded", function () {
