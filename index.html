@@ -138,8 +138,8 @@
               id="bass"
               name="intensity"
               min="0"
-              max="100"
-              value="50"
+              max="1"
+              value=".5"
             />
 
             <p>sensitivity to mid:</p>
@@ -149,8 +149,8 @@
               id="mid"
               name="intensity"
               min="0"
-              max="100"
-              value="50"
+              max="1"
+              value=".5"
             />
 
             <p>sensitivity to treble:</p>
@@ -160,8 +160,52 @@
               id="treble"
               name="intensity"
               min="0"
-              max="100"
-              value="50"
+              max="1"
+              value=".5"
+            />
+
+            <p>sensitivity to mid:</p>
+            <input
+              class="large-sens"
+              type="range"
+              id="mid"
+              name="intensity"
+              min="0"
+              max="1"
+              value=".5"
+            />
+
+            <p>low thresh:</p>
+            <input
+              class="large-sens"
+              type="range"
+              id="low-thresh"
+              name="intensity"
+              min="0"
+              max="255"
+              value="10"
+            />
+
+            <p>mid thresh:</p>
+            <input
+              class="large-sens"
+              type="range"
+              id="mid-thresh"
+              name="intensity"
+              min="0"
+              max="255"
+              value="10"
+            />
+
+            <p>high thresh:</p>
+            <input
+              class="large-sens"
+              type="range"
+              id="high-thresh"
+              name="intensity"
+              min="0"
+              max="255"
+              value="10"
             />
           </section>
         </div>

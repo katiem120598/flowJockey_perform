@@ -9,6 +9,9 @@ const ws = new WebSocket(serverAddress);
 const bass = document.getElementById("bass");
 const mid = document.getElementById("mid");
 const treble = document.getElementById("treble");
+const lowThresh = document.getElementById("low-thresh");
+const midThresh = document.getElementById("mid-thresh");
+const highThresh = document.getElementById("high-thresh");
 const playpause = document.getElementById("playButton")
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -43,6 +46,23 @@ mid.addEventListener("input", function () {
 });
 treble.addEventListener("input", function () {
   const modeswitch = { type: "trebleval", val:treble.value };
+  ws.send(JSON.stringify(modeswitch));
+  // Update some real-time display or effect
+});
+lowThresh.addEventListener("input", function () {
+  console.log("Current slider value:", lowThresh.value);
+  const modeswitch = { type: "lowthreshval", val:lowThresh.value};
+  ws.send(JSON.stringify(modeswitch));
+  // Update some real-time display or effect
+});
+
+midThresh.addEventListener("input", function () {
+  // Update some real-time display or effect
+  const modeswitch = { type: "midthreshval",val:midThresh.value };
+  ws.send(JSON.stringify(modeswitch));
+});
+highThresh.addEventListener("input", function () {
+  const modeswitch = { type: "highthreshval", val:highThresh.value };
   ws.send(JSON.stringify(modeswitch));
   // Update some real-time display or effect
 });
