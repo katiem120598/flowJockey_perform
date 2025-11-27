@@ -87,11 +87,39 @@
   <body>
     <div class="pinkcontainer" id="withmargins">
       <div>
+
+        <div id="control_contain">
+            <section>
+            <p><br /><br />select audio input:</p>
+            <div class="horizontal-left blockdisp">
+              <div>
+                <input
+                  type="radio"
+                  class="large-radio"
+                  name="audio"
+                  value="mic"
+                  checked
+                />
+                <label for="mic">mic</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  class="large-radio"
+                  name="audio"
+                  value="pre-loaded"
+                  checked
+                />
+                <label for="pre-loaded">757 by 100 Gecs</label>
+              </div>
+            </div>
+          </section>
+
         <section>
           <button class="large-play" id="playButton">play/pause</button>
         </section>
 
-        <div id="control_contain">
           <section>
             <p><br /><br />select display mode:</p>
             <div class="horizontal-left blockdisp">

@@ -237,7 +237,7 @@ navbarog {
     margin-right: 8px; /* Optional: Adds some spacing between the radio button and the label */
 }
 .large-play {
-    transform: scale(2); /* Adjust the scale value as needed */ /* Optional: Adds some spacing between the radio button and the label */
+    transform: scale(1); /* Adjust the scale value as needed */ /* Optional: Adds some spacing between the radio button and the label */
 }
 
 #control_contain {
@@ -245,4 +245,8 @@ navbarog {
   flex-direction: column; /* Arrange elements vertically */
   justify-content: space-between; /* Evenly distribute space between elements */
   height: 50%; /* Ensure the section takes up the full height of the container */
+}
+
+.hidden {
+  display: none !important;
 }

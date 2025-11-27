@@ -4,6 +4,7 @@ let normpoints = [];
 let normshapes = [];
 let clientnum = 0;
 let mode = "grid"; // Default mode
+let audio = "pre-loaded"; // Default mode
 const serverAddress = "wss://flowjockey-server.onrender.com";
 const ws = new WebSocket(serverAddress);
 const bass = document.getElementById("bass");
@@ -15,6 +16,30 @@ const highThresh = document.getElementById("high-thresh");
 const playpause = document.getElementById("playButton")
 
 document.addEventListener("DOMContentLoaded", function () {
+  const audioOptions = document.getElementsByName("audio");
+  const playpauseBtn = document.getElementById("playButton");
+
+  audioOptions.forEach(function(option) {
+    option.addEventListener("change", function() {
+      if (this.value === "pre-loaded") {
+        audio = "pre-loaded";
+        playpauseBtn.classList.remove("hidden"); // show button
+      } else {
+        audio = "mic";
+        playpauseBtn.classList.add("hidden"); // hide button
+      }
+
+      // Send audio mode to server
+      const audioswitch = { type: "audioswitch", val: audio };
+      ws.send(JSON.stringify(audioswitch));
+    });
+  });
+
+  // Hide on first load because default is mic
+  if (audio === "mic") {
+    playpauseBtn.classList.add("hidden");
+  }
+  
   // Attach the event listener to each radio button with the name 'mode'
   const startDraw = document.createElement("text")
   const modeOptions = document.getElementsByName("mode");
