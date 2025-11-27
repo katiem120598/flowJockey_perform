@@ -4,6 +4,23 @@
     <script src="p5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <meta charset="utf-8" />
+    <script>
+      // If inside an iframe → allow scrolling
+      if (window.self !== window.top) {
+        document.documentElement.style.overflowY = "auto";
+        document.body.style.overflowY = "auto";
+
+        // Fix full-height containers
+        document.querySelectorAll('*').forEach(el => {
+          if (getComputedStyle(el).height === "100vh") {
+            el.style.height = "auto";
+            el.style.minHeight = "100vh";
+          }
+          el.style.overflowY = "auto";
+        });
+      }
+    </script>
+    
     <style>
       body,
       html {
