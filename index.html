@@ -32,7 +32,7 @@
 
         box-sizing: border-box;
       }
-
+      
       section {
         margin-bottom: 20px;
       }
@@ -42,8 +42,19 @@
       label {
         color: white;
         font-size: 12px;
-        margin: 5px 0;
       }
+      
+      label.slider {
+        display: block;
+        margin: 30px 0 20px 0 !important;
+      }
+
+      input[type="range"] {
+        display: block;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
 
       /* Style for play button */
       .large-play {
@@ -70,7 +81,7 @@
 
       /* Range input (slider) styling */
       .large-sens {
-        width: 80%;
+        width: 100%;
         height: 5px;
       }
 
@@ -90,6 +101,24 @@
           transform: scale(1.2); /* Scale up elements for larger screens */
         }
       }
+
+      .large-sens {
+        position: relative;
+      }
+
+      .large-sens-value {
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 12px;
+        display: none;
+        z-index: 9999;
+        bottom: 100%; /* show above slider */
+        transform: translateX(-50%);
+      }
+
     </style>
   </head>
   <body>
@@ -167,7 +196,7 @@
           </section>
 
           <section>
-            <p>sensitivity to bass:</p>
+            <label class = "slider">sensitivity to bass frequencies:</label>
             <input
               class="large-sens"
               type="range"
@@ -178,7 +207,7 @@
               value="50"
             />
 
-            <p>sensitivity to mid:</p>
+            <label class = "slider">sensitivity to mid frequencies:</label>
             <input
               class="large-sens"
               type="range"
@@ -189,7 +218,7 @@
               value="50"
             />
 
-            <p>sensitivity to treble:</p>
+            <label class = "slider">sensitivity to treble frequencies:</label>
             <input
               class="large-sens"
               type="range"
@@ -200,7 +229,7 @@
               value="50"
             />
 
-            <p>low thresh:</p>
+            <label class = "slider">low frequency detection threshold:</label>
             <input
               class="large-sens"
               type="range"
@@ -208,10 +237,10 @@
               name="intensity"
               min="0"
               max="255"
-              value="10"
+              value="225"
             />
 
-            <p>mid thresh:</p>
+            <label class = "slider">mid frequency detection threshold:</label>
             <input
               class="large-sens"
               type="range"
@@ -219,10 +248,10 @@
               name="intensity"
               min="0"
               max="255"
-              value="10"
+              value="225"
             />
 
-            <p>high thresh:</p>
+            <label class = "slider">high frequency detection threshold:</label>
             <input
               class="large-sens"
               type="range"
@@ -230,12 +259,49 @@
               name="intensity"
               min="0"
               max="255"
-              value="10"
+              value="225"
             />
           </section>
         </div>
       </div>
     </div>
+
+    <script>
+      document.querySelectorAll('.large-sens').forEach(slider => {
+      // Create wrapper div to hold both slider and tooltip
+      const wrap = document.createElement('div');
+      wrap.style.position = "relative";
+      wrap.style.width = "100%";
+
+      // Insert wrapper into DOM
+      slider.parentNode.insertBefore(wrap, slider);
+      wrap.appendChild(slider);
+
+      // Create tooltip element
+      const tooltip = document.createElement('span');
+      tooltip.className = 'large-sens-value';
+      wrap.appendChild(tooltip);
+
+      // Update tooltip on slider move
+      slider.addEventListener('input', () => {
+        tooltip.textContent = slider.value;
+
+        const pct = (slider.value - slider.min) / (slider.max - slider.min);
+        tooltip.style.left = `calc(${pct * 100}%)`;
+        tooltip.style.display = 'block';
+      });
+
+      /*slider.addEventListener('mouseenter', () => {
+        tooltip.style.display = 'block';
+      });
+      */
+
+      slider.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+
+    </script>
 
     <script src="sketch.js"></script>
   </body>
